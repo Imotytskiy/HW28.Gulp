@@ -8,4 +8,10 @@ global.app = {
 
 import { copy } from "./gulp/tasks/copy.js";
 
-gulp.task("default", copy);
+function watcher() {
+  gulp.watch(path.watch.files, copy);
+}
+
+const dev = gulp.series(copy, watcher);
+
+gulp.task("default", dev);
