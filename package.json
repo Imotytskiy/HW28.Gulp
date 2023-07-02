@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Imotytskiy/HW28.Gulp/issues"
   },
-  "homepage": "https://github.com/Imotytskiy/HW28.Gulp#readme"
+  "homepage": "https://github.com/Imotytskiy/HW28.Gulp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
