@@ -1,0 +1,19 @@
+{
+  "name": "hw28.gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Imotytskiy/HW28.Gulp.git"
+  },
+  "author": "IhorMotytskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Imotytskiy/HW28.Gulp/issues"
+  },
+  "homepage": "https://github.com/Imotytskiy/HW28.Gulp#readme"
+}
