@@ -1,8 +1,3 @@
-export const server = (done) => {
-  app.plugins.browserSync.init({
-    server: {
-      baseDir: `app.path.build.html`,
-    },
-    port: 3000,
-  });
+export const server = () => {
+  app.plugins.livereload({ start: true });
 };
