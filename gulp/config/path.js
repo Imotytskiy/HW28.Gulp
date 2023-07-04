@@ -11,13 +11,13 @@ export const path = {
     files: `${buildFolder}/files/`,
   },
   src: {
-    scss: `${srcFolder}/scss/style.scss`,
+    scss: `${srcFolder}/files/scss/style.scss`,
     html: `${srcFolder}/*.html`,
     files: `${srcFolder}/files/**/*.*`,
   },
   watch: {
-    scss: `${srcFolder}/scss/**/*.scss`,
-    html: `${srcFolder}/**/*.html`,
+    scss: `${srcFolder}/files/scss/**/*.scss`,
+    html: `${srcFolder}/*.html`, ///  подумать с include
     files: `${srcFolder}/files/**/*.*`,
   },
   clean: buildFolder,
