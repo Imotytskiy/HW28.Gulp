@@ -8,12 +8,11 @@ global.app = {
 
 // import tasks
 import { copy } from "./gulp/tasks/copy.js";
-// import { reset } from "./gulp/tasks/reset.js";
+import { reset } from "./gulp/tasks/reset.js";
 
 function watcher() {
   gulp.watch(path.watch.files, copy);
 }
 
-const dev = gulp.series(copy, watcher); // reset
-
+const dev = gulp.series(reset, copy, watcher);
 gulp.task("default", dev);
