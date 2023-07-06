@@ -26,4 +26,4 @@ function watcher() {
 }
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
-gulp.task("default", dev);
+gulp.task("build", dev);

@@ -1,5 +1,5 @@
 let textTitles = {
-  categories: "ПЕРЕЛІК КАТЕГОРІЙ ТА ЗАМОВЛЕНЬ",
+  categories: "ПЕРЕЛІК КАТЕГОРІЙ ТА ЗАМОВЛЕННЯ",
   goodsList: "СПИСОК ТОВАРІВ",
   arcticleInfo: "ІНФОРМАЦІЯ ПРО ТОВАР",
   buy: "КУПИТИ",
