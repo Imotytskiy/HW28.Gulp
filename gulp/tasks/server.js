@@ -1,11 +1,11 @@
-import * as browserSync from "browser-sync";
-
-const bs = browserSync.create();
+// import * as browserSync from "browser-sync";
 
 export function server() {
-  bs.init({
+  app.plugins.browserSync.init({
     server: { baseDir: app.path.build.html },
   });
 
-  bs.watch(app.path.watch.html).on("change", bs.reload);
+  app.plugins.browserSync
+    .watch(app.path.watch.html)
+    .on("change", app.plugins.browserSync.reload);
 }
