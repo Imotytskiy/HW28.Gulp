@@ -1,4 +1,4 @@
-// import babel from "gulp-babel";
+import babel from "gulp-babel";
 import concat from "gulp-concat";
 export const js = () => {
   return (
