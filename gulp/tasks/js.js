@@ -1,10 +1,9 @@
-import babel from "gulp-babel";
-import concat from "gulp-concat";
+// import babel from "gulp-babel";
 export const js = () => {
   return (
     app.gulp
       .src(app.path.src.js, { sourcemaps: true })
-      .pipe(concat("all.js"))
+      .pipe(app.plugins.concat("all.js"))
       .pipe(app.plugins.plumber())
       // .pipe(babel())
       .pipe(app.gulp.dest(app.path.build.js))
