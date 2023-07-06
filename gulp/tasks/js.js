@@ -2,9 +2,10 @@ import babel from "gulp-babel";
 export const js = () => {
   return app.gulp
     .src(app.path.src.js, { sourcemaps: true })
+    .pipe(app.plugins.plumber())
     .pipe(babel())
-    .pipe(app.gulp.dest(app.path.build.js));
-  // .pipe(app.browserSync.stream());
+    .pipe(app.gulp.dest(app.path.build.js))
+    .pipe(app.plugins.browserSync.stream());
 };
 
 // import webpack from "webpack-stream";
