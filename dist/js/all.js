@@ -1,17 +1,111 @@
-import { textTitles, prices, dataShop } from "./data.js";
+let textTitles = {
+  categories: "ПЕРЕЛІК КАТЕГОРІЙ ТА ЗАМОВЛЕНЬ",
+  goodsList: "СПИСОК ТОВАРІВ",
+  arcticleInfo: "ІНФОРМАЦІЯ ПРО ТОВАР",
+  buy: "КУПИТИ",
+  buyed: "ТОВАР КУПЛЕНИЙ",
+  edit: "РЕДАГУВАТИ",
+  confirm: "ПІДТВЕРДИТИ",
+  order: "МОЇ ЗАМОВЛЕННЯ",
+};
+let prices = [0, 1200, 1330, 5164, 4586, 1512, 4852, 5945, 4587, 4587];
+let dataShop = [
+  {
+    name: "DELL",
+    products: [
+      {
+        name: "DELL INSPIRION",
+        description:
+          "Dell Inspiron - це серія бюджетних та середнього класу ноутбуків від компанії Dell.",
+        id: 1,
+      },
+      {
+        name: "DELL LATITUDE",
+        description:
+          "Dell Latitude - це серія ноутбуків для бізнесу, виробництва компанії Dell.\
+             Вони зазвичай орієнтовані на надійність, продуктивність та стійкість до зношування, що \
+             часто є важливими факторами для корпоративних користувачів.",
+        id: 2,
+      },
+      {
+        name: "DELL XPS",
+        description:
+          "Dell XPS - це серія ноутбуків, вироблених компанією Dell. Вона є флагманським \
+             рядом ноутбуків Dell і зазвичай призначена для користувачів, яким потрібна висока продуктивність\
+              та якість.",
+        id: 3,
+      },
+    ],
+  },
+  {
+    name: "Apple",
+    products: [
+      {
+        name: "MacBook Air",
+        description:
+          "MacBook Air - це серія ноутбуків від Apple, відомих своєю легкістю та тонким дизайном. \
+             Вони зазвичай пропонують високу продуктивність для повсякденних завдань.",
+        id: 4,
+      },
+      {
+        name: "MacBook Pro",
+        description:
+          "MacBook Pro - це високопродуктивна серія ноутбуків від Apple. Вони зазвичай мають потужні \
+             процесори, високоякісні дисплеї та інші передові технології.",
+        id: 5,
+      },
+      {
+        name: "iMac",
+        description:
+          "iMac - це серія настільних комп'ютерів від Apple, які відомі своїм елегантним дизайном та \
+            високоякісними дисплеями.",
+        id: 6,
+      },
+    ],
+  },
+  {
+    name: "HP",
+    products: [
+      {
+        name: "HP Pavilion",
+        description:
+          "HP Pavilion - це серія ноутбуків та настільних комп'ютерів середнього класу від HP, які орієнтовані \
+           на широкий спектр звичайних завдань.",
+        id: 7,
+      },
+      {
+        name: "HP Envy",
+        description:
+          "HP Envy - це серія високоякісних ноутбуків від HP, відомих своїм стильним дизайном та високою продуктивністю.",
+        id: 8,
+      },
+      {
+        name: "HP EliteBook",
+        description:
+          "HP EliteBook - це серія бізнес-ноутбуків від HP. Вони зазвичай відрізняються високою надійністю, потужними \
+           процесорами та опціями безпеки.",
+        id: 9,
+      },
+    ],
+  },
+];
+
 const catContainer = document.getElementById("catContainer");
 const prodContainer = document.getElementById("prodContainer");
 const descrContainer = document.getElementById("descrContainer");
 const formContainer = document.getElementById("formContainer");
+
 catContainer.textContent = textTitles.categories;
 prodContainer.textContent = textTitles.goodsList;
 descrContainer.textContent = textTitles.arcticleInfo;
-const applyStyles = element => {
+
+const applyStyles = (element) => {
   element.classList.add("block");
   if (element.tagName === "BUTTON") {
     element.classList.add("button");
   }
 };
+
 function createButton(container, text, clickHandler) {
   var buttonElement = document.createElement("button");
   buttonElement.textContent = text;
@@ -19,13 +113,16 @@ function createButton(container, text, clickHandler) {
   container.appendChild(buttonElement);
   buttonElement.addEventListener("click", clickHandler);
 }
+
 const clearBlock = () => {
   prodContainer.innerHTML = textTitles.goodsList;
   descrContainer.innerHTML = textTitles.arcticleInfo;
 };
+
 const clearFirstBlock = () => {
   catContainer.innerHTML = textTitles.categories;
 };
+
 const createOrderElement = () => {
   const orderElement = document.createElement("div");
   applyStyles(orderElement);
@@ -34,21 +131,26 @@ const createOrderElement = () => {
   catContainer.appendChild(orderElement);
   return orderElement;
 };
-document.getElementById("alldelete") // button delete all
-.addEventListener("click", function (event) {
-  for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    if (key.includes("order")) {
-      localStorage.removeItem(key);
+
+document
+  .getElementById("alldelete") // button delete all
+  .addEventListener("click", function (event) {
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      if (key.includes("order")) {
+        localStorage.removeItem(key);
+      }
     }
-  }
-  location.reload();
-});
+    location.reload();
+  });
+
 document.getElementById("reload").addEventListener("click", function (event) {
   location.reload();
 });
+
 const orderElement = createOrderElement();
-const findStorageOrder = count => {
+
+const findStorageOrder = (count) => {
   for (let i = 0; i < count; i++) {
     if (localStorage.key(i).includes("order")) {
       return false;
@@ -56,6 +158,7 @@ const findStorageOrder = count => {
   }
   return true;
 };
+
 orderElement.addEventListener("click", function (event) {
   if (findStorageOrder(localStorage.length)) {
     alert("Замовлення відсутні");
@@ -65,22 +168,27 @@ orderElement.addEventListener("click", function (event) {
   catContainer.style.display = "none";
   const accordionContainer = document.getElementById("accordion-container");
   accordionContainer.style.display = "block";
+
   function createAccordionSection(sectionTitle, sectionContent) {
     const button = document.createElement("button");
     button.id = idButton;
     button.classList.add("accordion");
     button.textContent = sectionTitle;
+
     const innerButton = document.createElement("span");
     innerButton.classList.add("delete-button");
     innerButton.textContent = "ВИДАЛИТИ";
+
     const panel = document.createElement("div");
     panel.classList.add("panel");
     const paragraph = document.createElement("p");
     paragraph.textContent = sectionContent;
     panel.appendChild(paragraph);
+
     accordionContainer.appendChild(button);
     button.appendChild(innerButton);
     accordionContainer.appendChild(panel);
+
     innerButton.addEventListener("click", function () {
       const closestElement = innerButton.closest(".accordion");
       const closestElementId = closestElement.id;
@@ -91,24 +199,34 @@ orderElement.addEventListener("click", function (event) {
       closestElement.remove();
     });
   }
+
   let idButton = "";
   function createAccordionSections(count) {
     for (let i = 0; i < count; i++) {
       let key = localStorage.key(i);
       const forValue = JSON.parse(localStorage.getItem(key));
       idButton = forValue.key;
-      let orderInfo = `Замовлено ${localStorage.key(i).slice(0, -11)} року. Ціна за одн. ${forValue.price}$. Кількість ${forValue.quantity} шт. Загальна сумма до сплати ${(Number(forValue.quantity) * Number(forValue.price)).toString()} дол. США`;
+      let orderInfo = `Замовлено ${localStorage
+        .key(i)
+        .slice(0, -11)} року. Ціна за одн. ${forValue.price}$. Кількість ${
+        forValue.quantity
+      } шт. Загальна сумма до сплати ${(
+        Number(forValue.quantity) * Number(forValue.price)
+      ).toString()} дол. США`;
       createAccordionSection(orderInfo, forValue.description);
     }
   }
+
   createAccordionSections(localStorage.length);
+
   var acc = document.getElementsByClassName("accordion");
   var i;
+
   for (i = 0; i < acc.length; i++) {
     // from w3schools.com + css + html accordion
     acc[i].addEventListener("click", function () {
       /* Toggle between adding and removing the "active" class,
-      to highlight the button that controls the panel */
+    to highlight the button that controls the panel */
       this.classList.toggle("active");
 
       /* Toggle between hiding and showing the active panel */
@@ -125,17 +243,21 @@ orderElement.addEventListener("click", function (event) {
     });
   }
 });
-dataShop.forEach(category => {
+dataShop.forEach((category) => {
   const categoryElement = document.createElement("div");
   applyStyles(categoryElement);
   categoryElement.textContent = category.name;
   catContainer.appendChild(categoryElement);
   categoryElement.addEventListener("click", makeCategory);
 });
+
 function makeCategory(event) {
-  let currentCategory = dataShop.find(category => category.name === event.target.innerText);
+  let currentCategory = dataShop.find(
+    (category) => category.name === event.target.innerText
+  );
   clearBlock();
-  currentCategory.products.forEach(product => {
+
+  currentCategory.products.forEach((product) => {
     const productElement = document.createElement("div");
     applyStyles(productElement);
     productElement.textContent = product.name;
@@ -180,46 +302,57 @@ function formWarehouse() {
     }
   });
 }
+
 formWarehouse(); // check box для склада Новой почты
 
 const inputName = document.getElementById("name");
 const inputSurname = document.getElementById("surname");
 const inputFatherName = document.getElementById("father-name");
+
 function makeUpperCaseForName(input) {
   input.addEventListener("input", () => {
     input.value = input.value.toUpperCase();
   });
 }
+
 makeUpperCaseForName(inputName); // uppercase для ФИО
 makeUpperCaseForName(inputSurname);
 makeUpperCaseForName(inputFatherName);
+
 (function () {
   const rangeInput = document.getElementById("customRange2");
+
   rangeInput.addEventListener("input", () => {
     document.getElementById("rangeValue").textContent = rangeInput.value; // бегунок формы обновляем realtime value
   });
 
   const actualForm = document.getElementById("buyerform");
-  actualForm.addEventListener("submit", event => {
+  actualForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(actualForm);
     let string = "";
     formData.forEach((value, key) => {
       string += `<div class="formarray">${key}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${value}</div>`;
     });
-    document.getElementById("formPost").innerHTML = `<div class="formarray">Iнформація про товар та про доставку<br>${string} </div>`;
+
+    document.getElementById(
+      "formPost"
+    ).innerHTML = `<div class="formarray">Iнформація про товар та про доставку<br>${string} </div>`;
     deleteButtons();
     createButton(formContainer, textTitles.edit, () => {
       enableFormElements();
     });
+
     const dateForJson = function () {
       let now = new Date();
+
       let year = now.getFullYear();
       let month = now.getMonth() + 1;
       let day = now.getDate();
       let hour = now.getHours();
       let minute = now.getMinutes();
       let second = now.getSeconds();
+
       month = month < 10 ? "0" + month : month;
       day = day < 10 ? "0" + day : day;
       hour = hour < 10 ? "0" + hour : hour;
@@ -228,24 +361,31 @@ makeUpperCaseForName(inputFatherName);
       let formattedDate = `${day} ${month} ${year}${hour}${minute}${second}order`;
       return formattedDate;
     };
+
     const createJsonFormData = () => {
       const jsonFormData = {};
+
       jsonFormData.key = dateForJson();
       jsonFormData.id = jsonIdProduct;
       jsonFormData.quantity = actualForm["quantity"].value;
       jsonFormData.product = jsonProduct;
       jsonFormData.date = jsonFormData.key.slice(0, -11);
       jsonFormData.price = prices[jsonIdProduct].toString();
+
       jsonFormData.description = `Замовник: ${actualForm["name"].value} ${actualForm["surname"].value} ${actualForm["father-name"].value}. 
         Місто доставки: ${actualForm["city"].value}. Спосіб оплати: ${actualForm["paymentmethod"].value}. Товар: ${jsonDescription}`;
+
       if (actualForm["number-of-post"].value) {
         jsonFormData.description += ` Склад Нової пошти для надсилання № ${actualForm["number-of-post"].value}.`;
       }
+
       if (actualForm["comment"].value) {
         jsonFormData.description += ` Коментар:  ${actualForm["comment"].value}.`;
       }
+
       return jsonFormData;
     };
+
     createButton(formContainer, textTitles.confirm, () => {
       const jsonFormData = createJsonFormData();
       localStorage.setItem(jsonFormData.key, JSON.stringify(jsonFormData));
@@ -257,15 +397,20 @@ makeUpperCaseForName(inputFatherName);
       actualForm.elements[i].disabled = true;
     }
   });
+
   function deleteButtons() {
     // button edit and approve for form
     const buttons = document.querySelectorAll("button");
-    buttons.forEach(button => {
-      if (button.textContent.trim() === "РЕДАГУВАТИ" || button.textContent.trim() === "ПІДТВЕРДИТИ") {
+    buttons.forEach((button) => {
+      if (
+        button.textContent.trim() === "РЕДАГУВАТИ" ||
+        button.textContent.trim() === "ПІДТВЕРДИТИ"
+      ) {
         button.remove();
       }
     });
   }
+
   function createButton(container, text, clickHandler) {
     var buttonElement = document.createElement("button");
     buttonElement.textContent = text;
@@ -273,6 +418,7 @@ makeUpperCaseForName(inputFatherName);
     container.appendChild(buttonElement);
     buttonElement.addEventListener("click", clickHandler);
   }
+
   function enableFormElements() {
     // все elements form ON
     for (let i = 0; i < actualForm.elements.length; i++) {

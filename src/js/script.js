@@ -1,5 +1,3 @@
-import { textTitles, prices, dataShop } from "./data.js";
-
 const catContainer = document.getElementById("catContainer");
 const prodContainer = document.getElementById("prodContainer");
 const descrContainer = document.getElementById("descrContainer");
