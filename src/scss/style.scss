@@ -1,68 +1,67 @@
+$color_1: white;
+$color_2: #444;
+$background-color_1: #eee;
+$background-color_2: #ccc;
+$background-color_3: white;
+
+/* Style the buttons that are used to open and close the accordion panel */
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/* Style the accordion panel. Note: hidden by default */
 #root {
   display: flex;
   flex-direction: column;
 }
-
-#catContainer,
-section {
+#catContainer {
   display: block;
 }
-
-#accordion-container,
-#formContainer {
+#accordion-container {
   display: none;
 }
-
 .delete-button {
   display: block;
   font-size: bold;
-  color: white;
+  color: $color_1;
   background: red;
   border-radius: 4px;
   width: 100px;
   text-align: center;
   margin-left: auto;
-
   &:hover {
     background: darkred;
   }
 }
-
-#firstRow,
-#secondRow {
+#firstRow {
   display: flex;
   flex-direction: row;
 }
-
+#secondRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 section {
+  display: block;
   text-align: center;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
   width: 30%;
 }
-
-#secondRow {
-  justify-content: flex-end;
-}
-
 #descrContainer {
   width: 50%;
 }
-
 #formContainer {
+  display: none;
   width: 40%;
   margin-right: 50px;
 }
-
 .order {
   background: #008000 !important;
   font-size: large;
 }
-
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: $background-color_1;
+  color: $color_2;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -70,16 +69,16 @@ section {
   border: none;
   outline: none;
   transition: 0.4s;
-
-  &.active,
   &:hover {
-    background-color: #ccc;
+    background-color: $background-color_2;
   }
 }
-
+.active {
+  background-color: $background-color_2;
+}
 .panel {
   padding: 0 18px;
-  background-color: white;
+  background-color: $background-color_3;
   display: none;
   overflow: hidden;
 }
