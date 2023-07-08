@@ -18,19 +18,27 @@
   },
   "homepage": "https://github.com/Imotytskiy/HW28.Gulp#readme",
   "devDependencies": {
+    "@babel/core": "^7.22.8",
+    "@babel/preset-env": "^7.22.7",
     "browser-sync": "^2.29.3",
     "del": "^7.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.3.0",
+    "gulp-if": "^3.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-replace": "^1.1.4",
     "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-version-number": "^0.2.4",
     "sass": "^1.63.6",
     "webpack": "^5.88.1",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.22.6",
+    "gulp-eslint": "^6.0.0"
   }
 }

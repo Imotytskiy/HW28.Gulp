@@ -3,6 +3,8 @@ import { path } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
+  // isBuild: process.argv.includes("--build"),
+  // isDev: !process.argv.includes("--build"),
   path: path,
   gulp: gulp,
   plugins: plugins,
@@ -22,7 +24,6 @@ function watcher() {
   gulp.watch(path.watch.scss, scss);
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.html, html);
-  // .on("change", app.plugins.browserSync.reload);
 }
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));

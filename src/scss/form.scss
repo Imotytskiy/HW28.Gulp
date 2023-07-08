@@ -1,5 +1,4 @@
 $color_1: white;
-$background-color_1: #00d2ff;
 
 #root {
   display: flex;
@@ -24,6 +23,10 @@ $background-color_1: #00d2ff;
   transition-duration: 0.4s;
   display: block;
 }
-.button-color {
-  background-color: $background-color_1;
+.button {
+  background-color: #00d2ff;
+}
+.button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
