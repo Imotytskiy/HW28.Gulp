@@ -4,9 +4,18 @@ $background-color_1: #eee;
 $background-color_2: #ccc;
 $background-color_3: white;
 
-/* Style the buttons that are used to open and close the accordion panel */
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-/* Style the accordion panel. Note: hidden by default */
+#alldelete {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+}
+
+#reload {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: green;
+}
+
 #root {
   display: flex;
   flex-direction: column;
