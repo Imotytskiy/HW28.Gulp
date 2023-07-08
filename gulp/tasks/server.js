@@ -6,6 +6,6 @@ export function server() {
   });
 
   app.plugins.browserSync
-    .watch(app.path.watch.html)
+    .watch(app.path.watch.files || app.path.watch.html)
     .on("change", app.plugins.browserSync.reload);
 }
