@@ -12,7 +12,7 @@ export const js = () => {
     .pipe(app.plugins.plumber())
     .pipe(
       webpack({
-        mode: "production",
+        mode: app.isBuild ? "production" : "development",
         output: {
           filename: "main.js",
         },

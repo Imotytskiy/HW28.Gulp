@@ -3,8 +3,8 @@ import { path } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
-  // isBuild: process.argv.includes("--build"),
-  // isDev: !process.argv.includes("--build"),
+  isBuild: process.argv.includes("--build"),
+  isDev: !process.argv.includes("--build"),
   path: path,
   gulp: gulp,
   plugins: plugins,
@@ -26,4 +26,8 @@ function watcher() {
 }
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
-gulp.task("build", dev);
+const build = gulp.series(reset, mainTasks);
+export { dev };
+export { build };
+
+gulp.task("default", dev);
