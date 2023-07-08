@@ -1,13 +1,15 @@
-import babel from "gulp-babel";
-// import webpack from "webpack-stream";
+// import babel from "gulp-babel";
+import webpackconcat from "webpack-concat-files-plugin";
+import webpack from "webpack-stream";
 export const js = () => {
   return app.gulp
     .src(app.path.src.js)
-    .pipe(app.plugins.concat("all.js"))
-    .pipe(app.plugins.plumber())
     .pipe(
-      babel({
-        presets: ["@babel/env"],
+      webpack({
+        mode: "production",
+        output: {
+          filename: "main.js",
+        },
       })
     )
     .pipe(app.gulp.dest(app.path.build.js))

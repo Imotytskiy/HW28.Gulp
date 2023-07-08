@@ -35,6 +35,7 @@
     "gulp-version-number": "^0.2.4",
     "sass": "^1.63.6",
     "webpack": "^5.88.1",
+    "webpack-concat-files-plugin": "^0.5.2",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
